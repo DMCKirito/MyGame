@@ -48,6 +48,8 @@ public class HeroPlane extends JComponent
 		this.setLayout(null);
 		setBounds(0,0,GameConstant.FRAME_WIDTH,GameConstant.FRAME_HEIGHT);
 		image = GameUtils.getImage("image/planes/plane.GIF");
+		this.imageW = image.getWidth(null);
+		this.imageH = image.getHeight(null);
 		this.shockX = 4;
 		this.shockY = 4;
 		this.timer = 6;
