@@ -9,6 +9,7 @@ import gameDto.GameDto;
 import gameObject.Enemy_Boss;
 import gameObject.Enemy_Plane;
 import gameObject.Enemy_PlaneB2;
+import gameObject.Game_Bg;
 import gameUtils.GameConstant;
 
 public class GamePanel extends JPanel implements Runnable
@@ -19,6 +20,7 @@ public class GamePanel extends JPanel implements Runnable
 	private static final long serialVersionUID = 1L;
 	
 	private int count = 0;
+	Game_Bg game_Bg = new Game_Bg();
 	
 	public GamePanel() 
 	{
@@ -31,6 +33,7 @@ public class GamePanel extends JPanel implements Runnable
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
+		add(game_Bg);
 		if(GameDto.timer % 30 == 0)
 		{
 			addEnemy_Plane();
@@ -65,6 +68,7 @@ public class GamePanel extends JPanel implements Runnable
 		Enemy_Boss enemy_Boss = new Enemy_Boss();
 		this.add(enemy_Boss);
 	}
+	
 	public void run()
 	{
 		try {

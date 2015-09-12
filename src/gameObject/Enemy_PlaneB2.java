@@ -33,10 +33,10 @@ public class Enemy_PlaneB2 extends Enemy {
 	{
 		super.paintComponent(g);
 		
-		isBoom();
 		
 		if (isAlive && isDrawing) 
 		{
+			isBoom();
 			g.drawImage(image, x, y, null);
 			this.move();
 			if(this.mSpeed == 0)

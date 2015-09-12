@@ -52,7 +52,7 @@ public class Enemy_Boss extends JComponent
 		this.image2 = imageIndexChange.getImageOfIndex(1);
 		
 		this.isAlive = true;
-		this.lives = 50;
+		this.lives = 50000;
 		
 		this.mSpeed = 3;
 		
@@ -110,11 +110,11 @@ public class Enemy_Boss extends JComponent
 	public void isRightOrLeft() 
 	{			
 		judgeMove();
-		if(this.x > GameDto.HERO_X && (this.x - GameDto.HERO_X) > 3)
+		if(this.x + 70 > GameDto.HERO_X && (this.x + 70 - GameDto.HERO_X) > 3)
 		{
 			this.x -= mSpeed;
 		}
-		else if(this.x < GameDto.HERO_X && (this.x - GameDto.HERO_X) < -3)
+		else if(this.x + 70 < GameDto.HERO_X && (this.x + 70 - GameDto.HERO_X) < -3)
 		{
 			this.x += mSpeed;
 		}

@@ -17,14 +17,12 @@ public class Enemy_Plane extends Enemy
 	{
 		super();
 		this.isDrawing = true;
-		
 		this.lives = 2;
 		this.speed = 2;
 		
 		this.image = GameUtils.getImage("image/planes/eplane2.gif");
 		this.imageW = (int)imageW;
 		this.imageH = (int)imageH;
-		
 		this.x = rX.nextInt(GameConstant.FRAME_WIDTH - (int)imageW);
 		this.y = -30;
 	}
@@ -34,22 +32,22 @@ public class Enemy_Plane extends Enemy
 	{
 		super.paintComponent(g);
 		
-		isBoom();
 		
 		if (isAlive && isDrawing) 
 		{
+			isBoom();
 			g.drawImage(image, x, y, null);
 			this.move();
+			if(timer % 125 == 0 && isAlive)
+			{
+				shoot();
+			}
 		}
-		else
+		else if(!isAlive)
 		{
 			boom.draw(this.x - (int)imageW/2, this.y - (int)imageH/2, g);
 		}
 		
-		if(timer % 125 == 0 && isAlive)
-		{
-			shoot();
-		}
 		
 		timer ++;
 	}

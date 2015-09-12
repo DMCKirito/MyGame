@@ -21,6 +21,7 @@ public class GameFrame extends JFrame
 	private static final long serialVersionUID = 1L;
 	GamePanel gamePanel;
 	public GameFrame() {
+        GameDto.resetAll();
 		gamePanel = new GamePanel();
 	}
 	
@@ -33,7 +34,7 @@ public class GameFrame extends JFrame
 //			JDialog.setDefaultLookAndFeelDecorated(true);
 //			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel");
 //        } catch (ClassNotFoundException e1) {
-//            e1.printStackTrace();
+//            e1.printStackTrace(); 
 //        } catch (InstantiationException e1) {
 //            e1.printStackTrace();
 //        } catch (IllegalAccessException e1) {
