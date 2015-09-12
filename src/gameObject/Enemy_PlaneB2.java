@@ -49,6 +49,12 @@ public class Enemy_PlaneB2 extends Enemy {
 			boom.draw(this.x - (int)imageW/2, this.y - (int)imageH/2, g);
 		}
 		
+		if(!isAlive && !addPoint)
+		{
+			GameDto.Game_Point += 200;
+			addPoint = true;
+		}
+		
 		timer ++;
 	}
 

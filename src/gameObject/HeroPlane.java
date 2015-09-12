@@ -176,6 +176,19 @@ public class HeroPlane extends JComponent
 			}
 		}
 		
+		if(isAlive)
+		{
+			for(int i = 0; i < GameDto.boss_Guns.size(); i ++)
+			{
+				if(GameDto.boss_Guns.get(i).getRectangle().intersects(this.getRectangle()))
+				{
+					GameDto.HERO_LIVES --;
+					this.isShock = true;
+					break;
+				}
+			}
+		}
+		
 		if(GameDto.HERO_LIVES < 0)
 		{
 			this.isAlive = false;

@@ -34,6 +34,7 @@ public abstract class Enemy extends JComponent
 	protected Boom boom = new Boom();
 	protected Image image;
 	
+	protected boolean addPoint;
 	protected int timer;
 	
 	public Enemy()
@@ -43,6 +44,7 @@ public abstract class Enemy extends JComponent
 		
 		this.isAlive = true;
 		this.isDrawing = true;
+		addPoint = false;
 		rX = new Random();
 		
 	}

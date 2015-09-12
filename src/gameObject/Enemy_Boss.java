@@ -39,6 +39,8 @@ public class Enemy_Boss extends JComponent
 	
 	private int shootCount;
 	
+	private boolean addPoint;
+	
 	private Boom boom = new Boom();
 	
 	public Enemy_Boss()
@@ -48,6 +50,7 @@ public class Enemy_Boss extends JComponent
 
 		ImageIndexChange imageIndexChange = new ImageIndexChange(2, GameUtils.getImage("image/planes/4.png"));
 		
+		this.addPoint = false;
 		this.image = imageIndexChange.getImageOfIndex(2);
 		this.image2 = imageIndexChange.getImageOfIndex(1);
 		
@@ -95,6 +98,12 @@ public class Enemy_Boss extends JComponent
 		{
 			boom.draw(this.x, this.y, g);
 		}
+		
+		if(!isAlive && !addPoint)
+		{
+			GameDto.Game_Point += 100000;
+			addPoint = true;
+		}
 	}
 	
 	public void shoot()
@@ -102,6 +111,7 @@ public class Enemy_Boss extends JComponent
 		if(shootCount == 0)
 		{
 			Boss_Gun boss_Gun = new Boss_Gun(this.x + (int)imageW/6, this.y + (int)imageH);
+			GameDto.boss_Guns.add(boss_Gun);
 			this.add(boss_Gun);
 			shootCount++;
 		}
@@ -122,7 +132,7 @@ public class Enemy_Boss extends JComponent
 		
 	public void judgeMove()
 	{
-		if(GameDto.timer % 120 > 0 && GameDto.timer % 120 < 25) 
+		if(GameDto.timer % 300 > 0 && GameDto.timer % 300 < 25) 
 		{
 			this.mSpeed = 0;
 		}
@@ -148,16 +158,27 @@ public class Enemy_Boss extends JComponent
 		{	
 			if (GameDto.bullets.get(i).isAlive && GameDto.bullets.get(i).getRectangle().intersects(this.getRectangle()))
 			{
-				this.lives -= 1;
+				GameDto.Boss_Lives -= 1;
 				GameDto.bullets.get(i).isAlive = false;
 				this.isShock = true;
+				GameDto.Game_Point += 50;
 				break;
 			}
+			
 			if(lives == 0)
 			{
 				isAlive = false;
 			}
         }
+		
+		if(isAlive)
+		{
+			if(this.getRectangle().intersects(GameDto.heroPlane.getRectangle()))
+			{
+				this.isAlive = false;
+				GameDto.Boss_Lives = 0;
+			}
+		}
 		
 		return isAlive;
 	}

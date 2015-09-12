@@ -10,6 +10,7 @@ import gameObject.Enemy_Boss;
 import gameObject.Enemy_Plane;
 import gameObject.Enemy_PlaneB2;
 import gameObject.Game_Bg;
+import gameObject.Game_Board;
 import gameUtils.GameConstant;
 
 public class GamePanel extends JPanel implements Runnable
@@ -21,12 +22,14 @@ public class GamePanel extends JPanel implements Runnable
 	
 	private int count = 0;
 	Game_Bg game_Bg = new Game_Bg();
+	Game_Board game_Board = new Game_Board();
 	
 	public GamePanel() 
 	{
 		setLayout(null);
 		setBounds(0, 0, GameConstant.FRAME_WIDTH, GameConstant.FRAME_HEIGHT);
 		add(GameDto.heroPlane);
+		add(game_Board);
 		new Thread(this).start();
 	}
 	

@@ -37,4 +37,15 @@ public class ImageIndexChange {
 			return bufferedImage.getSubimage(0, (index - 1) * height/index, width, height/index);
 		}
 	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+	
+	
+	
 }
